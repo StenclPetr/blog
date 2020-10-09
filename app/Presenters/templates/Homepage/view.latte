@@ -1,0 +1,55 @@
+
+{block content}
+    <div class="container">
+        <form n:name=viewForm class=form>
+
+            <div class="form-group">
+                <label n:name=artname>Název článku</label>
+                <input class="form-control" n:name="artname" value="{$dataRow->title}"  placeholder="Vložte název článku" disabled>
+            </div>
+            <div class="form-group">
+                <label n:name=artsummary>Obsah článku</label>
+                <input class="form-control" n:name="artsummary" value="{$dataRow->summary}" placeholder="Vložte stručný popis článku" disabled>
+            </div>
+            <div class="form-group">
+                <label n:name="artdate">Datum publikace</label>
+                <input id="pass" n:name=artdate class="form-control" value="{$dataRow->datum|date:'j.m.Y'}" placeholder="Datum vzniku" disabled>
+            </div>
+            <div class="form-group">
+                <label n:name="artautor">Autor článku</label>
+                <input n:name=artautor class="form-control" placeholder="Jméno nebo alterego autora" disabled>
+            </div>
+            <div class="form-group">
+                <label n:name="artcontent">Článek</label>
+                <textarea n:name=artcontent class="form-control" placeholder="Vložte článek" disabled hidden="false">{$dataRow->content}</textarea>
+
+{*                    <div aria-readonly="true" contenteditable="true" class="div-contenteditable" >{$dataRow->content}</div>*}
+                <div contenteditable="true">{$dataRow->content}</div>
+
+            </div>
+
+
+                <button id="viewBtnClose" class="btn btn-primary btn-lg" style="float:right;">Zavřít</button>
+{*            <a id="viewBtnClose" data-ajax="false" role="button" class="btn btn-primary btn-lg" style="float:right;">Zavřít</a>*}
+
+        </form>
+{*        {$dataRow->content}*}
+    </div>
+    <style>
+{*        .div-contenteditable {*}
+{*            background: #fff;*}
+{*            border: 1px solid #ccc;*}
+{*            padding: .2em;*}
+{*        }*}
+
+    </style>
+    <script>
+        $(document).ready(function(){
+
+            $("#viewBtnClose").click(function (){
+                $("#mymodal").modal('hide');
+
+            });
+        });
+    </script>
+{/block}

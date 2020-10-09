@@ -1,0 +1,41 @@
+{block content}
+
+    <div class="container">
+        <form n:name=registerForm class=form>
+
+            <div class="form-group">
+                <label n:name=nick>Uživatelské jméno/nick</label>
+                <input class="form-control" n:name="nick" placeholder="Vložte jméno nebo nick">
+            </div>
+            <div class="form-group">
+                <label n:name=email>Uživatelský e-mail</label>
+                <input class="form-control" n:name="email" placeholder="Vložte e-mail">
+            </div>
+            <div class="form-group">
+                <label n:name="password">Heslo</label>
+                <input id="pass" n:name=password class="form-control" placeholder="Heslo">
+            </div>
+            <div class="form-group">
+                <label n:name="val_password">Potvrzení hesla</label>
+                <input n:name=val_password class="form-control" placeholder="Potvrzení hesla">
+            </div>
+            <button id="registerBtnClose" data-ajax="false" type="submit" class="btn btn-primary" style="float:right;">Zrušit</button>
+            <button id="registerBtnSubmit" type="submit" n:name=send class="btn btn-primary">Registrace</button>
+
+        </form>
+
+    </div>
+    <script>
+        $(document).ready(function(){
+            $("#registerBtnSubmit").click(function (){
+                $("#mymodal").modal('hide');
+
+            });
+            $("#registerBtnClose").click(function (){
+                $("#mymodal").modal('hide');
+
+            });
+        });
+    </script>
+
+{/block}

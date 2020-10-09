@@ -1,0 +1,72 @@
+{block content}
+    <div class="container">
+        <form n:name=editForm class=form>
+
+            <div class="form-group">
+                <label n:name=artid hidden="true">Název článku</label>
+                <input class="form-control" n:name="artid" value="{$dataRow->id}"  placeholder="Vložte název článku" hidden="true">
+            </div>
+            <div class="form-group">
+                <label n:name=arttitle>Název článku</label>
+                <input class="form-control" n:name="arttitle" value="{$dataRow->title}"  placeholder="Vložte název článku" >
+            </div>
+            <div class="form-group">
+                <label n:name=artsummary>Obsah článku</label>
+                <input class="form-control" n:name="artsummary" value="{$dataRow->summary}" placeholder="Vložte stručný popis článku" >
+            </div>
+            <div class="form-group">
+                <label n:name="artdate">Datum publikace</label>
+                <input id="artdate" n:name=artdate class="form-control" value="{$dataRow->datum|date:'j.m.Y'}" placeholder="Datum vzniku" >
+            </div>
+            <div class="form-group">
+                <label n:name="artautor">Autor článku</label>
+                <input n:name=artautor class="form-control" value="{$userNick}" placeholder="Jméno nebo alterego autora" disabled >
+            </div>
+            <div class="form-group">
+                <label n:name="artcontent">Článek</label>
+                <textarea n:name=artcontent class="form-control"  rows="20" placeholder="Vložte článek">{$dataRow->content}</textarea>
+
+
+
+{*                                    <div aria-readonly="true" contenteditable="true" class="form-control div-contenteditable" >{$dataRow->content}</div>*}
+{*                <div>{$dataRow->content}</div>*}
+
+            </div>
+
+
+            <button id="editBtnClose" data-ajax="false" class="btn btn-primary btn-lg" style="float:right;">Zavřít</button>
+            <button id="editBtnSubmit" type="submit" n:name=send class="btn btn-primary btn-lg">Uložit</button>
+            {*            <a id="viewBtnClose" data-ajax="false" role="button" class="btn btn-primary btn-lg" style="float:right;">Zavřít</a>*}
+
+        </form>
+
+    </div>
+    <style>
+                .input-contenteditable {
+                    background: #fff;
+                    border: 1px solid #ccc;
+                    padding: .2em;
+                }
+                .clsDatePicker {
+                    z-index: 100000;
+                }
+    </style>
+    <script n:syntax="off">
+        $(document).ready(function(){
+            $("#editBtnSubmit").click(function (){
+                $("#mymodal").modal('hide');
+
+            });
+            $("#editBtnClose").click(function (){
+                $("#mymodal").modal('hide');
+
+            });
+            $('#artdate').datepicker({
+                uiLibrary: 'bootstrap4',
+                format: 'dd.mm.yyyy'
+            });
+
+        });
+
+    </script>
+{/block}

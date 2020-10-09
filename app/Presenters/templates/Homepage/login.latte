@@ -1,0 +1,31 @@
+{block content}
+    <div class="container">
+        <form n:name=loginForm class=form>
+            {*          </div>*}
+            <div class="form-group">
+                <label n:name=email>Uživatelský e-mail</label>
+                <input class="form-control" n:name="email" placeholder="Vložte e-mail">
+            </div>
+            <div class="form-group">
+                <label n:name="password">Heslo</label>
+                <input id="pass" n:name=password class="form-control" placeholder="Heslo">
+            </div>
+
+            <button id="loginBtnClose" type="submit" n:name=send  class="btn btn-primary">Přihlášení<a></a></button>
+
+        </form>
+
+    </div>
+    <script>
+
+
+        $(document).ready(function(){
+
+            $("#loginBtnClose").click(function (){
+                $("#mymodal").modal('hide');
+            });
+        });
+
+
+    </script>
+{/block}

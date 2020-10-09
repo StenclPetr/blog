@@ -1,0 +1,66 @@
+{block content}
+    <div class="container">
+        <form n:name=addForm class=form>
+
+            <div class="form-group">
+                <label n:name=arttitle>Název článku</label>
+                <input class="form-control" n:name="arttitle"  placeholder="Vložte název článku" >
+            </div>
+            <div class="form-group">
+                <label n:name=artsummary>Obsah článku</label>
+                <input class="form-control" n:name="artsummary"  placeholder="Vložte stručný popis článku" >
+            </div>
+            <div class="form-group">
+                <label n:name="artdate">Datum publikace</label>
+                <input id="artdate" n:name=artdate class="form-control"  placeholder="Datum vzniku" >
+            </div>
+            <div class="form-group">
+                <label n:name="artautor">Autor článku</label>
+                <input n:name=artautor class="form-control" placeholder="Jméno nebo alterego autora" disabled>
+            </div>
+            <div class="form-group">
+                <label n:name="artcontent">Článek</label>
+                <textarea n:name=artcontent class="form-control" rows="20"  placeholder="Vložte článek"></textarea>
+
+{*                <div aria-readonly="true" contenteditable="true" class="div-contenteditable" ></div>*}
+                {*                <div>{$dataRow->content}</div>*}
+
+            </div>
+
+
+            <button id="addBtnClose" class="btn btn-primary btn-lg" style="float:right;">Zavřít</button>
+            <button id="addBtnSubmit" type="submit" n:name=send class="btn btn-primary btn-lg">Uložit</button>
+            {*            <a id="viewBtnClose" data-ajax="false" role="button" class="btn btn-primary btn-lg" style="float:right;">Zavřít</a>*}
+
+        </form>
+
+    </div>
+    <style>
+        .div-contenteditable {
+            background: #fff;
+            border: 1px solid #ccc;
+            padding: .2em;
+        }
+        .clsDatePicker {
+            z-index: 100000;
+        }
+    </style>
+    <script n:syntax="off">
+        $(document).ready(function(){
+            $("#addBtnSubmit").click(function (){
+                $("#mymodal").modal('hide');
+
+            });
+            $("#addBtnClose").click(function (){
+                $("#mymodal").modal('hide');
+
+            });
+            $('#artdate').datepicker({
+                uiLibrary: 'bootstrap4',
+                format: 'dd.mm.yyyy'
+            });
+
+        });
+
+    </script>
+{/block}

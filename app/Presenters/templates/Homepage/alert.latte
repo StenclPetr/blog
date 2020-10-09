@@ -1,0 +1,16 @@
+{block}
+    <div class="alert alert-dark" role="alert">
+        {$message}
+    </div>
+    <button id="refreshBtn" class="btn btn-primary btn-lg" style="float:right;">Zavřít</button>
+
+    <script>
+        $(document).ready(function(){
+            $("#refreshBtn").click(function (){
+                $("#mymodal").modal('hide');
+                location.reload();
+            });
+        });
+
+    </script>
+{/block}
